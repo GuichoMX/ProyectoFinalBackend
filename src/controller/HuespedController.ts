@@ -13,17 +13,21 @@ export class HuespedController{
         })
     }
 
-    async saveHuesped(id_usuario: number, nombres: string, apellidoP: string, apellidoM: string,edad: number, pais: string, ciudad: string, num_contacto: string, num_referencia: string){
-        return await Huesped.create({id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia})
+    async saveNewHuesped(huesped: Huesped){
+        return await Huesped.create({...huesped})
     }
 
-    async updateHuesped(id_usuario: number, nombres: string, apellidoP: string, apellidoM: string,edad: number, pais: string, ciudad: string, num_contacto: string, num_referencia: string){
+    async saveHuesped(id_usuario: number, nombres: string, apellidoP: string, apellidoM: string,edad: number, pais: string, ciudad: string, num_contacto: string, num_referencia: string, genero: string, propiedadAsignada: string){
+        return await Huesped.create({id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada})
+    }
+
+    async updateHuesped(id_usuario: number, nombres: string, apellidoP: string, apellidoM: string,edad: number, pais: string, ciudad: string, num_contacto: string, num_referencia: string, genero: string, propiedadAsignada: string){
         const huesped = await Huesped.findOne({
             where: { id_usuario } // es una notación corta de where: { asin: asin }
         })
         // si existe procedemos a actualizar
         if (huesped) {
-            await Huesped.update({ id_usuario, nombres, apellidoP, apellidoM,edad, pais, ciudad, num_contacto, num_referencia}, {
+            await Huesped.update({ id_usuario, nombres, apellidoP, apellidoM,edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada}, {
                 where: { id_usuario } // es una notación corta de where: { asin: asin }
             })
             // regresamos el libro reciéntemente actualizado

@@ -11,6 +11,8 @@ export default class Huesped extends Model<InferAttributes<Huesped>, InferCreati
     declare ciudad: string
     declare num_contacto: string
     declare num_referencia: string
+    declare genero: string
+    declare propiedadAsignada: string
 }
 
 Huesped.init({
@@ -48,6 +50,14 @@ Huesped.init({
         allowNull: false,
     },
     num_referencia: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    genero: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    propiedadAsignada: {
         type: DataTypes.STRING,
         allowNull: false,
     }

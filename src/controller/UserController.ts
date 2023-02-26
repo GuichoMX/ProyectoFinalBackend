@@ -11,6 +11,7 @@ export class UserController{
         user.password = await hash(user.password, this.SALT_ROUNDS)
         return await User.create({...user})
     }
+    
 
     async getUserToken(email: string, password: string){
         const user = await User.findOne({ where: { email }})

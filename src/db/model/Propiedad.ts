@@ -9,6 +9,7 @@ export default class Propiedad extends Model<InferAttributes<Propiedad>, InferCr
     declare fecha_final: Date
     declare max_personas: number
     declare id_usuario: number
+    declare hecho: number
 }
 
 Propiedad.init({
@@ -38,6 +39,10 @@ Propiedad.init({
         allowNull: false,
     },
     id_usuario: {
+        type: DataTypes.NUMBER,        
+        allowNull: false,
+    },
+    hecho: {
         type: DataTypes.NUMBER,        
         allowNull: false,
     },

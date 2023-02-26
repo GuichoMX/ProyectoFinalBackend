@@ -35,6 +35,10 @@ Propiedad.init({
         type: sequelize_1.DataTypes.NUMBER,
         allowNull: false,
     },
+    hecho: {
+        type: sequelize_1.DataTypes.NUMBER,
+        allowNull: false,
+    },
 }, {
     timestamps: true,
     sequelize: __1.sequelize

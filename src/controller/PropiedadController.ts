@@ -14,18 +14,18 @@ export class PropiedadController{
     }
 
     async savePropiedad(id_propiedad: number, nombre: string, direccion: string, fecha_inicio: Date, fecha_final: Date, 
-        max_personas: number, id_usuario: number){
-        return await Propiedad.create({id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario})
+        max_personas: number, id_usuario: number, hecho: number){
+        return await Propiedad.create({id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho})
     }
 
     async updatePropiedad(id_propiedad: number, nombre: string, direccion: string, fecha_inicio: Date, fecha_final: Date, 
-        max_personas: number, id_usuario: number){
+        max_personas: number, id_usuario: number, hecho:number){
         const propiedad = await Propiedad.findOne({
             where: { id_propiedad } // es una notación corta de where: { asin: asin }
         })
         // si existe procedemos a actualizar
         if (propiedad) {
-            await Propiedad.update({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario }, {
+            await Propiedad.update({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario,hecho }, {
                 where: { id_propiedad } // es una notación corta de where: { asin: asin }
             })
             // regresamos el libro reciéntemente actualizado

@@ -10,10 +10,11 @@ exports.typeDefs = (0, apollo_server_1.gql) `
     getHuesped(id_usuario:ID!): Huesped,
   }
   type Mutation {
-    insertPropiedad(id_propiedad:ID!,nombre:String, direccion:String, fecha_inicio:String, fecha_final:String, max_personas:Int, id_usuario:Int): Propiedad,
-    updatePropiedad(id_propiedad:ID!,nombre:String, direccion:String, fecha_inicio:String, fecha_final:String, max_personas:Int, id_usuario:Int): Propiedad,
-    insertHuesped(id_usuario: Int, nombres: String, apellidoP: String, apellidoM: String,edad: Int, pais: String, ciudad: String, num_contacto: String, num_referencia: String): Huesped,
-    updateHuesped(id_usuario: Int, nombres: String, apellidoP: String, apellidoM: String,edad: Int, pais: String, ciudad: String, num_contacto: String, num_referencia: String): Huesped,
+    insertPropiedad(id_propiedad:ID!,nombre:String, direccion:String, fecha_inicio:String, fecha_final:String, max_personas:Int, id_usuario:Int, hecho:Int): Propiedad,
+    updatePropiedad(id_propiedad:ID!,nombre:String, direccion:String, fecha_inicio:String, fecha_final:String, max_personas:Int, id_usuario:Int, hecho:Int): Propiedad,
+    insertHuesped(id_usuario: Int, nombres: String, apellidoP: String, apellidoM: String,edad: Int, pais: String, ciudad: String, num_contacto: String, num_referencia: String, genero: String, propiedadAsignada: String): Huesped,
+    insertHuespedes(input: HuespedInput): Huesped,
+    updateHuesped(id_usuario: Int, nombres: String, apellidoP: String, apellidoM: String,edad: Int, pais: String, ciudad: String, num_contacto: String, num_referencia: String, genero: String, propiedadAsignada: String): Huesped,
     signUp(input: UserInput): User,
     signIn(email: String!, password: String!): String
   }
@@ -24,7 +25,8 @@ exports.typeDefs = (0, apollo_server_1.gql) `
     fecha_inicio: String,
     fecha_final: String,
     max_personas: Int,
-    id_usuario: Int
+    id_usuario: Int,
+    hecho: Int
   }
 
   type Huesped {
@@ -36,7 +38,22 @@ exports.typeDefs = (0, apollo_server_1.gql) `
     pais: String,
     ciudad: String,
     num_contacto: String,
-    num_referencia: String
+    num_referencia: String,
+    genero: String,
+    propiedadAsignada: String
+  }
+
+  input HuespedInput {
+    nombres: String,
+    apellidoP: String,
+    apellidoM: String,
+    edad: Int,
+    pais: String,
+    ciudad: String,
+    num_contacto: String,
+    num_referencia: String,
+    genero: String,
+    propiedadAsignada: String
   }
 
   type User {

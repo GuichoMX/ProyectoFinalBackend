@@ -16,16 +16,16 @@ class PropiedadController {
             where: { id_propiedad }
         });
     }
-    async savePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario) {
-        return await Propiedad_1.default.create({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario });
+    async savePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho) {
+        return await Propiedad_1.default.create({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho });
     }
-    async updatePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario) {
+    async updatePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho) {
         const propiedad = await Propiedad_1.default.findOne({
             where: { id_propiedad } // es una notación corta de where: { asin: asin }
         });
         // si existe procedemos a actualizar
         if (propiedad) {
-            await Propiedad_1.default.update({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario }, {
+            await Propiedad_1.default.update({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho }, {
                 where: { id_propiedad } // es una notación corta de where: { asin: asin }
             });
             // regresamos el libro reciéntemente actualizado
@@ -33,7 +33,7 @@ class PropiedadController {
         }
         // en caso contrario, lanzamos mensaje y código de error
         else {
-            throw new apollo_server_errors_1.ApolloError('Book not found', 'ERR003');
+            throw new apollo_server_errors_1.ApolloError('Propiedad not found', 'ERR003');
         }
     }
 }

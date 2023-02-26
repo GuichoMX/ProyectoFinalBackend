@@ -42,6 +42,14 @@ Huesped.init({
     num_referencia: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
+    },
+    genero: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
+    propiedadAsignada: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     }
 }, {
     timestamps: true,

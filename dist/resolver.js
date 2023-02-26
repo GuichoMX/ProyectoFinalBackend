@@ -25,17 +25,20 @@ exports.resolvers = {
         }
     },
     Mutation: {
-        insertPropiedad: (_, { id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario }, { token }) => {
-            return AuthController.verifyToken(token) && propiedadController.savePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario);
+        insertPropiedad: (_, { id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho }, { token }) => {
+            return AuthController.verifyToken(token) && propiedadController.savePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho);
         },
-        updatePropiedad: async (_, { id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario }, { token }) => {
-            return AuthController.verifyToken(token) && propiedadController.savePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario);
+        updatePropiedad: async (_, { id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho }, { token }) => {
+            return AuthController.verifyToken(token) && propiedadController.updatePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho);
         },
-        insertHuesped: (_, { id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia }, { token }) => {
-            return AuthController.verifyToken(token) && huespedController.saveHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia);
+        insertHuesped: (_, { id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada }, { token }) => {
+            return AuthController.verifyToken(token) && huespedController.saveHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada);
         },
-        updateHuesped: async (_, { id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia }, { token }) => {
-            return AuthController.verifyToken(token) && huespedController.updateHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia);
+        insertHuespedes: async (_, { input: huesped }) => {
+            return huespedController.saveNewHuesped(huesped);
+        },
+        updateHuesped: async (_, { id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada }, { token }) => {
+            return AuthController.verifyToken(token) && huespedController.updateHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada);
         },
         signUp: async (_, { input: user }) => {
             return userController.saveUser(user);

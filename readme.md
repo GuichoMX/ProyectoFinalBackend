@@ -100,4 +100,8 @@ mutation {
 mutation {
   signIn(email: "escobedotrenado@gmail.com", password:"myPa$$w0rd")
 }
+
+mutation {
+  signIn(email: "test@gmail.com", password:"12345")
+}
 ```

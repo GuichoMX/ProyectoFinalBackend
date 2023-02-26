@@ -16,16 +16,19 @@ class HuespedController {
             where: { id_usuario }
         });
     }
-    async saveHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia) {
-        return await Huesped_1.default.create({ id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia });
+    async saveNewHuesped(huesped) {
+        return await Huesped_1.default.create({ ...huesped });
     }
-    async updateHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia) {
+    async saveHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada) {
+        return await Huesped_1.default.create({ id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada });
+    }
+    async updateHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada) {
         const huesped = await Huesped_1.default.findOne({
             where: { id_usuario } // es una notación corta de where: { asin: asin }
         });
         // si existe procedemos a actualizar
         if (huesped) {
-            await Huesped_1.default.update({ id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia }, {
+            await Huesped_1.default.update({ id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada }, {
                 where: { id_usuario } // es una notación corta de where: { asin: asin }
             });
             // regresamos el libro reciéntemente actualizado
