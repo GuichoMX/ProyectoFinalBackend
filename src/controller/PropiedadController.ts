@@ -13,6 +13,10 @@ export class PropiedadController{
         })
     }
 
+    async saveNewPropiedad(propiedad: Propiedad){
+        return await Propiedad.create({...propiedad})
+    }
+
     async savePropiedad(id_propiedad: number, nombre: string, direccion: string, fecha_inicio: Date, fecha_final: Date, 
         max_personas: number, id_usuario: number, hecho: number){
         return await Propiedad.create({id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho})

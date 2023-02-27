@@ -40,8 +40,8 @@ mutation {
 ### Insertar Huesped
 ```
 mutation {
-  insertHuesped(id_usuario: 1, nombres: "Jose Luis", apellidoP: "Escobedo", apellidoM: "Trenado", edad:26, pais:"Mexico", ciudad: "Cancun", num_contacto: "9981864348", num_referencia: "9982602501") {
-    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia
+  insertHuesped(id_usuario: 1, nombres: "Jose Luis", apellidoP: "Escobedo", apellidoM: "Trenado", edad:26, pais:"Mexico", ciudad: "Cancun", num_contacto: "9981864348", num_referencia: "9982602501", genero: "Masculino", porpiedadAsignada: 2) {
+    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada
   }
 }
 
@@ -51,7 +51,7 @@ mutation {
 ```
 query {
   getAllHuespedes {
-    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia
+    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada
   }
 }
 ```
@@ -60,7 +60,7 @@ query {
 ```
 query {
   getHuesped(id_usuario: 1) {
-    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia
+    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada
   }
 }
 ```
@@ -69,7 +69,7 @@ query {
 ``` 
 mutation {
   updateHuesped(id_usuario: 1, nombres: "Luis") {
-    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia
+    id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada
   }
 }
 ```

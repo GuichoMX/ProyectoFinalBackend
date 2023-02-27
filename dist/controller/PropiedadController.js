@@ -16,6 +16,9 @@ class PropiedadController {
             where: { id_propiedad }
         });
     }
+    async saveNewPropiedad(propiedad) {
+        return await Propiedad_1.default.create({ ...propiedad });
+    }
     async savePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho) {
         return await Propiedad_1.default.create({ id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho });
     }

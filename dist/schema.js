@@ -12,6 +12,7 @@ exports.typeDefs = (0, apollo_server_1.gql) `
   type Mutation {
     insertPropiedad(id_propiedad:ID!,nombre:String, direccion:String, fecha_inicio:String, fecha_final:String, max_personas:Int, id_usuario:Int, hecho:Int): Propiedad,
     updatePropiedad(id_propiedad:ID!,nombre:String, direccion:String, fecha_inicio:String, fecha_final:String, max_personas:Int, id_usuario:Int, hecho:Int): Propiedad,
+    insertPropiedades(input: PropiedadInput): Propiedad,
     insertHuesped(id_usuario: Int, nombres: String, apellidoP: String, apellidoM: String,edad: Int, pais: String, ciudad: String, num_contacto: String, num_referencia: String, genero: String, propiedadAsignada: String): Huesped,
     insertHuespedes(input: HuespedInput): Huesped,
     updateHuesped(id_usuario: Int, nombres: String, apellidoP: String, apellidoM: String,edad: Int, pais: String, ciudad: String, num_contacto: String, num_referencia: String, genero: String, propiedadAsignada: String): Huesped,
@@ -29,8 +30,18 @@ exports.typeDefs = (0, apollo_server_1.gql) `
     hecho: Int
   }
 
+  input PropiedadInput{
+    nombre: String,
+    direccion: String,
+    fecha_inicio: String,
+    fecha_final: String,
+    max_personas: Int,
+    id_usuario: Int,
+    hecho: Int
+  }
+
   type Huesped {
-    id_usuario: ID,
+    id_usuario: Int,
     nombres: String,
     apellidoP: String,
     apellidoM: String,

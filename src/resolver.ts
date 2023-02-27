@@ -35,10 +35,13 @@ export const resolvers = {
         updatePropiedad: async (_, { id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho}, {token}) => {
             return AuthController.verifyToken(token) && propiedadController.updatePropiedad(id_propiedad, nombre, direccion, fecha_inicio, fecha_final, max_personas, id_usuario, hecho)
         },
+        insertPropiedades: (_, { input: propiedad}) => {
+            return propiedadController.saveNewPropiedad(propiedad)
+        },
         insertHuesped: (_, { id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada}, {token}) => {
             return AuthController.verifyToken(token) && huespedController.saveHuesped(id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada)
         },
-        insertHuespedes: async (_, { input: huesped }) => {
+        insertHuespedes: (_, { input: huesped}) => {
             return huespedController.saveNewHuesped(huesped)
         },
         updateHuesped: async (_, { id_usuario, nombres, apellidoP, apellidoM, edad, pais, ciudad, num_contacto, num_referencia, genero, propiedadAsignada }, {token}) => {
